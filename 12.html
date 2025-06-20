@@ -1,0 +1,1611 @@
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> مؤسسه درر اروئ للمقاولات والديكورات</title>
+  <link rel="icon" href="IMG-20250617-WA0005.jpg" type="image/png" />
+
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #0d1c3d;
+      --accent-color: #e5a700;
+      --light-bg: #f9f9f9;
+      --white: #fff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--primary-color);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 30px; z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 80px;
+      border-radius: 8px;
+      border: 2px solid var(--accent-color);
+      background: var(--white);
+      padding: 4px;
+    }
+
+    nav.desktop {
+      display: flex; gap: 20px; align-items: center;
+    }
+
+    nav.desktop a {
+      color: var(--white); text-decoration: none;
+      font-weight: 700; padding: 8px 12px;
+      border-radius: 4px; transition: background 0.3s, color 0.3s;
+    }
+
+    nav.desktop a:hover {
+      background: var(--accent-color); color: var(--primary-color);
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 30px; height: 3px; background: var(--white);
+      border-radius: 2px; transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+
+    nav.mobile {
+      position: absolute; top: 100%; right: 0; left: 0;
+      background: rgba(13, 28, 61, 0.95);
+      overflow: hidden; max-height: 0;
+      display: flex; flex-direction: column;
+      transition: max-height 0.4s ease;
+    }
+
+    nav.mobile.show { max-height: 500px; }
+
+    nav.mobile a {
+      padding: 15px 25px; color: var(--white);
+      text-decoration: none; font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+
+    nav.mobile a:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero {
+      margin-top: 110px; position: relative; height: 100vh; overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hero img.active { opacity: 1; }
+
+    .overlay {
+      position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      background: rgba(13, 28, 61, 0.65);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      height: 100%; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      color: var(--white); padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem; color: var(--accent-color);
+      margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem; max-width: 700px;
+      animation: fadeIn 2.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+
+    section.about {
+      background: #fff; padding: 50px 40px;
+      border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      display: flex; gap: 40px; align-items: center;
+      flex-wrap: wrap-reverse;
+    }
+
+    section.about img {
+      max-width: 500px; width: 100%;
+      border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    section.about .text { flex: 1; min-width: 300px; }
+
+    section.about h2 {
+      font-size: 2.5rem; color: var(--primary-color);
+      margin-bottom: 20px; position: relative;
+    }
+
+    section.about h2::after {
+      content: ''; display: block; width: 60px; height: 4px;
+      background: var(--accent-color); margin-top: 10px; border-radius: 2px;
+    }
+
+    section.about p {
+      font-size: 1.1rem; line-height: 1.8; color: #555;
+    }
+
+    /* --- New Social Inline under About --- */
+    .social-inline {
+      margin-top: 30px;
+    }
+
+    .social-inline a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px; height: 45px;
+      margin-left: 12px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.3rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-inline a.whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+
+    .social-inline a.tiktok {
+      background: linear-gradient(135deg, #000, #444);
+    }
+
+    .social-inline a.phone {
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+    }
+
+    .social-inline a:hover {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* --- Side Floating Icons --- */
+    .side-icons {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .side-icons a {
+      width: 55px; height: 55px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      color: #fff; font-size: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .side-icons a.whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+
+    .side-icons a.tiktok {
+      background: linear-gradient(135deg, #000, #444);
+    }
+
+    .side-icons a.phone {
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+    }
+
+    .side-icons a:hover {
+      transform: scale(1.15) translateX(5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 992px) {
+      header { flex-direction: row-reverse; }
+      .hamburger { display: flex; order: 1; }
+      .logo { order: 2; }
+      nav.desktop { display: none; }
+    }
+
+    @media (min-width: 993px) {
+      nav.mobile { display: none !important; }
+  
+    }
+
+/************* SECTION أهدافنا *************/
+section.goals {
+  background: linear-gradient(135deg, #0d1c3d 0%, #1c3557 50%, #2f4b6e 100%);
+  color: #fff;
+  padding: 60px 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  margin-top: 70px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* إضافة لمسة زخرفة ناعمة داخل الخلفية باستخدام شفافيات */
+section.goals::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+section.goals .goals-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+section.goals .goals-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
+}
+
+section.goals .goals-image img:hover {
+  transform: scale(1.05);
+}
+
+section.goals .goals-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+section.goals h2 {
+  font-size: 2.8rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+section.goals h2::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: var(--accent-color);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+section.goals p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #f1f1f1;
+}
+
+section.goals .social-inline {
+  margin-top: 30px;
+}
+
+section.goals .social-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section.goals .social-inline a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+section.goals .social-inline a.tiktok {
+  background: linear-gradient(135deg, #000, #444);
+}
+
+section.goals .social-inline a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+section.goals .social-inline a:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 992px) {
+  section.goals {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  section.goals .goals-image img {
+    margin-bottom: 30px;
+  }
+}
+
+/************* SECTION خدماتنا بألوان مستوحاة من الشعار *************/
+section.services {
+  background: #fdf7f0; /* لون كريمي دافئ */
+  padding: 80px 40px;
+  text-align: center;
+}
+
+section.services h2 {
+  font-size: 2.8rem;
+  color: #a36b00; /* ذهبي داكن مستوحى من الشعار */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.services h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي مشرق من الشعار */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-decoration: none;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.service-card img {
+  width: 100%;
+  height: 220px; /* يمكنك تعديل الارتفاع حسب الذي يناسب التصميم */
+  object-fit: cover;
+  display: block;
+  border-radius: 15px 15px 0 0;
+}
+
+
+.service-info {
+  background: #b48f4e; /* بني ذهبي دافئ مستوحى من لون الفرشاة في الشعار */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+.service-info span {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.arrow-btn {
+  background: #f5c149; /* ذهبي أفتح */
+  border: none;
+  color: #5c3b00; /* بني غامق */
+  font-size: 1rem;
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.arrow-btn:hover {
+  background: #e0aa00;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  section.services {
+    padding: 60px 20px;
+  }
+
+  section.services h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/************* SECTION قيمنا *************/
+section.values {
+  background: linear-gradient(135deg, #f9f5ed, #f1e9d8); /* خلفية كريمية دافئة */
+  padding: 80px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+  margin-top: 70px;
+}
+
+section.values h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #0d1c3d; /* أزرق داكن للشعار */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.values h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي الشعار */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.values-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap-reverse;
+}
+
+.values-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.values-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.values-image img:hover {
+  transform: scale(1.05);
+}
+
+.values-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.values-content p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.values-list li {
+  position: relative;
+  padding-right: 30px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.values-list li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: #e5a700;
+  font-weight: bold;
+}
+
+.values .social-inline {
+  margin-top: 20px;
+}
+
+.values .social-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.values .social-inline a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.values .social-inline a.tiktok {
+  background: linear-gradient(135deg, #000, #444);
+}
+
+.values .social-inline a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.values .social-inline a:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 992px) {
+  .values-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  section.values {
+    padding: 60px 20px;
+  }
+
+  section.values h2 {
+    font-size: 2.2rem;
+  }
+
+  .values-content {
+    text-align: right;
+  }
+}
+
+
+/************* SECTION رسالتنا بألوان مميزة *************/
+section.mission {
+  background: linear-gradient(135deg, #fbe8e2, #f8d9c5); /* وردي خوخي هادئ */
+  padding: 80px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+  margin-top: 70px;
+}
+
+section.mission h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #7b3f00; /* بني فاخر */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.mission h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي مميز */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.mission-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap-reverse;
+}
+
+.mission-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.mission-content p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #5a3c2b; /* بني متوسط أنيق */
+  margin-bottom: 30px;
+}
+
+.mission-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.mission-list li {
+  position: relative;
+  padding-right: 30px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #5a3c2b;
+}
+
+.mission-list li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: #e5a700;
+  font-weight: bold;
+}
+
+.mission .social-inline {
+  margin-top: 20px;
+}
+
+.mission .social-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mission .social-inline a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.mission .social-inline a.tiktok {
+  background: linear-gradient(135deg, #000, #444);
+}
+
+.mission .social-inline a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.mission .social-inline a:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.mission-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.mission-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.mission-image img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .mission-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  section.mission {
+    padding: 60px 20px;
+  }
+
+  section.mission h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/************* SECTION رؤيتنا *************/
+section.vision {
+  background: linear-gradient(135deg, #e9f7f4, #d6eee9); /* أخضر نعناعي فاتح */
+  padding: 80px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+  margin-top: 70px;
+}
+
+section.vision h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #145c52; /* أخضر داكن أنيق */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.vision h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي فاخر */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.vision-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap-reverse;
+}
+
+.vision-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.vision-content p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.vision-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.vision-list li {
+  position: relative;
+  padding-right: 30px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.vision-list li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: #e5a700;
+  font-weight: bold;
+}
+
+.vision .social-inline {
+  margin-top: 20px;
+}
+
+.vision .social-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vision .social-inline a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.vision .social-inline a.tiktok {
+  background: linear-gradient(135deg, #000, #444);
+}
+
+.vision .social-inline a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.vision .social-inline a:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.vision-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.vision-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.vision-image img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .vision-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  section.vision {
+    padding: 60px 20px;
+  }
+
+  section.vision h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+/************* SECTION فروعنا *************/
+section.branches {
+  background: #f9f6f1; /* خلفية ناعمة */
+  padding: 80px 40px;
+  text-align: center;
+}
+
+section.branches h2 {
+  font-size: 2.8rem;
+  color: #0d1c3d; /* أزرق داكن أنيق */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.branches h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي راقي */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.branch-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.branch-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.branch-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.branch-content {
+  padding: 20px;
+}
+
+.branch-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #0d1c3d;
+}
+
+.branch-content iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.branch-contact {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.branch-contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.branch-contact a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.branch-contact a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.branch-contact a:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  section.branches {
+    padding: 60px 20px;
+  }
+
+  section.branches h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/************* SECTION بعض أعمالنا *************/
+section.portfolio {
+  background: linear-gradient(135deg, #f5f3ef, #f2e9da); /* خلفية كريمية جذابة */
+  padding: 80px 40px;
+  text-align: center;
+}
+
+section.portfolio h2 {
+  font-size: 2.8rem;
+  color: #0d1c3d; /* لون داكن أنيق */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.portfolio h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي فاخر */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-item {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 200px; /* ارتفاع موحد */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section.portfolio {
+    padding: 60px 20px;
+  }
+
+  section.portfolio h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+/************* SECTION اتصل بنا *************/
+section.contact {
+  background: linear-gradient(135deg, #fef5ea, #f9e6d5); /* خلفية خوخية ذهبية ناعمة */
+  padding: 80px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+  margin-top: 70px;
+  text-align: center;
+}
+
+section.contact h2 {
+  font-size: 2.8rem;
+  color: #7b3f00; /* بني ذهبي */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.contact h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form button {
+  background: #e5a700;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: #c99700;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: right;
+}
+
+.contact-info p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-info .social-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-info .social-inline a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.contact-info .social-inline a.tiktok {
+  background: linear-gradient(135deg, #000, #444);
+}
+
+.contact-info .social-inline a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.contact-info .social-inline a:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  section.contact {
+    padding: 60px 20px;
+  }
+
+  section.contact h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+
+/************* MAIN FOOTER *************/
+.main-footer {
+  background: linear-gradient(135deg, #0d1c3d, #193c63);
+  color: #eee;
+  padding: 60px 40px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  text-align: right;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-col.about img {
+  width: 80px;
+  border-radius: 12px;
+  border: 3px solid #e5a700;
+  margin-bottom: 15px;
+}
+
+.footer-col.about p {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.footer-col h4 {
+  font-size: 1.4rem;
+  color: #e5a700;
+  margin-bottom: 15px;
+}
+
+.footer-col.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col.links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col.links ul li a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-col.links ul li a:hover {
+  color: #e5a700;
+}
+
+.footer-col.contact p {
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-col.contact a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer-social {
+  margin-top: 15px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.footer-social a.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.footer-social a.phone {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+}
+
+.footer-social a.instagram {
+  background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-col {
+    margin-bottom: 30px;
+  }
+}
+
+.seo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d1c3d, #54801a);
+  color: #fff;
+  font-size: 1.3rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.seo:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/************* SECTION معرض الصور *************/
+section.gallery {
+  background: linear-gradient(135deg, #fef5e7, #f9e7c7); /* لون كريمي دافئ جذاب */
+  padding: 80px 40px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+section.gallery h2 {
+  font-size: 2.8rem;
+  color: #a36b00; /* ذهبي داكن مستوحى من الشعار */
+  margin-bottom: 50px;
+  position: relative;
+  font-weight: 900;
+}
+
+section.gallery h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #e5a700; /* ذهبي مشرق */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section.gallery {
+    padding: 60px 20px;
+  }
+
+  section.gallery h2 {
+    font-size: 2.2rem;
+  }
+}
+
+</style>
+
+
+<body>
+
+
+  <section class="hero">
+    <img src="ديكورات/2 (1).jpg" class="active" alt="صورة 1">
+    <img src="برجولات/2.jpg" alt="صورة 2">
+    <img src="مقاولات عامة/1.jpg" alt="صورة 3">
+    <img src="مقاولات عامة/2.jpg" alt="صورة 4">
+    <img src="ديكورات/2 (2).jpg" alt="صورة 5">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p>نحوّل رؤيتك إلى واقع يعكس طموحاتك</p>
+      <h1>مؤسسه درر اروئ للمقاولات والديكورات</h1>
+<p>أضف لمسة فريدة لمنزلك مع مؤسسة درر أروئ للمقاولات والديكورات
+
+في مؤسسة درر أروئ، نؤمن أن كل منزل يجب أن يكون انعكاساً لشخصية صاحبه وذوقه الخاص. نوفّر لك خدمات متكاملة تشمل المقاولات العامة، وترميم المباني، والأصباغ الداخلية والخارجية، وتصاميم الديكور الفريدة التي تمنح منزلك رونقاً وجمالاً استثنائياً.
+
+فريقنا من المتخصصين والمحترفين يعملون بدقة عالية والتزام كامل بمعايير الجودة والاحترافية، لنضمن لك تجربة متميزة ونتائج تتجاوز توقعاتك. تواصل معنا اليوم لتبدأ رحلة تحقيق منزلك المثالي مع درر أروئ.</p>
+    </div>
+  </section>
+
+
+
+
+<!-- SECTION: معرض صور -->
+<section class="gallery">
+  <h2>معرض الصور</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="مقاولات عامة/1.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/2.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/3.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/4.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/5.jpg" alt="صورة 5"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/6.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/7.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/8.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/9.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/10.jpg" alt="صورة 5"></div>    <div class="gallery-item"><img src="مقاولات عامة/27.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/11.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/12.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/13.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/14.jpg" alt="صورة 5"></div>    <div class="gallery-item"><img src="مقاولات عامة/28.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/15.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/16.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/17.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/18.jpg" alt="صورة 5"></div>    <div class="gallery-item"><img src="مقاولات عامة/29.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/19.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/20.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/21.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/22.jpg" alt="صورة 5"></div>    <div class="gallery-item"><img src="مقاولات عامة/30.jpg" alt="صورة 1"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/23.jpg" alt="صورة 2"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/24.jpg" alt="صورة 3"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/25.jpg" alt="صورة 4"></div>
+    <div class="gallery-item"><img src="مقاولات عامة/26.jpg" alt="صورة 5"></div>
+
+
+
+    <!-- يمكنك إضافة المزيد -->
+  </div>
+</section>
+
+
+
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <!-- العمود 1: عن الشركة -->
+    <div class="footer-col about">
+<img src="IMG-20250617-WA0005.jpg" alt="شعار المؤسسة">
+      <p>
+        مرحبًا بكم في درر أروئ للمقاولات والديكورات. نعتز بتقديم أفضل الخدمات في التصميم الداخلي والخارجي بأعلى مستويات الجودة والإبداع.
+      </p>
+    </div>
+
+    <!-- العمود 2: روابط مهمة -->
+    <div class="footer-col links">
+      <h4>روابط مهمة</h4>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="Our goals.html">أهدافنا</a></li>
+        <li><a href="Our services.html">خدماتنا</a></li>
+        <li><a href="Our values.html">قيمنا</a></li>
+        <li><a href="Our message.html">رسالتنا</a></li>
+        <li><a href="Our vision.html">رؤيتنا</a></li>
+        <li><a href="Blog.html">المدونة</a></li>
+        <li><a href="Contact us.html">اتصل بنا</a></li>
+      </ul>
+    </div>
+
+    <!-- العمود 3: معلومات التواصل -->
+    <div class="footer-col contact">
+      <h4>معلومات التواصل</h4>
+      <p>العنوان: المملكة العربية السعودية -  (الرياض - الجله(الرياض)  )</p>
+      <p>للتواصل: <a href="tel:+9660550212613">0550212613</a></p>
+      <div class="footer-social">
+        <a href="https://wa.me/9660509422751" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+       <a href="https://wa.me/9660550212613" target="_blank" class="seo">
+  <i class="fas fa-chart-line"></i>
+</a>
+
+        <a href="tel:+9660550212613" class="phone"><i class="fas fa-phone-alt"></i></a>
+        <a href="https://www.tiktok.com/@user83312539015064?_t=ZS-8xGJwKI7zdw&_r=1" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © جميع الحقوق محفوظة لمؤسسة درر أروئ للمقاولات والديكورات
+  </div>
+
+  
+
+
+  <!-- Side Floating Icons -->
+  <div class="side-icons">
+    <a href="https://wa.me/9660509422751" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.tiktok.com/@user83312539015064?_t=ZS-8xGJwKI7zdw&_r=1" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    <a href="tel:+9660550212613" class="phone"><i class="fas fa-phone-alt"></i></a>
+  </div>
+
+  <header>
+    
+    <div class="logo">
+      <img src="IMG-20250617-WA0005.jpg" alt="شعار المؤسسة">
+    </div>
+
+    <nav class="desktop">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="Our goals.html">أهدافنا</a>
+      <a href="Our services.html">خدماتنا</a>
+      <a href="Our values.html">قيمنا</a>
+      <a href="Our message.html">رسالتنا</a>
+      <a href="Our vision.html">رؤيتنا</a>
+      <a href="Blog.html">المدونة</a>
+      <a href="Contact us.html">اتصل بنا</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="mobile" id="mobile-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="Our goals.html">أهدافنا</a>
+      <a href="Our services.html">خدماتنا</a>
+      <a href="Our values.html">قيمنا</a>
+      <a href="Our message.html">رسالتنا</a>
+      <a href="Our vision.html">رؤيتنا</a>
+      <a href="Blog.html">المدونة</a>
+      <a href="Contact us.html">اتصل بنا</a>
+    </nav>
+  </header>
+
+</footer>
+
+  <script>
+    const images = document.querySelectorAll('.hero img');
+    let current = 0;
+    function showNextImage() {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }
+    setInterval(showNextImage, 7000);
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
