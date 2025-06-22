@@ -1349,10 +1349,48 @@ section.contact h2::after {
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
+/* زر العودة لأعلى الصفحة */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent-color); /* استخدم لونك الأساسي */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 </style>
 
 
 <body>
+
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
   <section class="hero">
     <img src="ديكورات/2 (1).jpg" class="active" alt="صورة 1">
     <img src="برجولات/2.jpg" alt="صورة 2">
@@ -1393,13 +1431,13 @@ section.contact h2::after {
       </div>
     </div>
 
-    <div class="service-card">
+    <!-- <div class="service-card">
       <img src="مقاولات عامة/1.jpg" alt="مقاولات عامة ">
       <div class="service-info">
         <a href="12.html" class="arrow-btn"><i class="fas fa-angle-left"></i></a>
         <a href="12.html" class="service-name"> مقاولات عامة</a>
       </div>
-    </div>
+    </div> -->
 
         <div class="service-card">
       <img src="ترميم مباني/1.jpg" alt="ترميم مباني ">
@@ -1560,11 +1598,13 @@ section.contact h2::after {
   </div>
 
 
-  <div class="footer-bottom">
-    © جميع الحقوق محفوظة لمؤسسة درر أروئ للمقاولات 
-    <br>
+
+  </div>
+
+© جميع الحقوق محفوظة لمؤسسة درر أروئ للمقاولات والديكورات <span id="year"></span>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
     <h3>صمم من قبل     <a href="https://wa.me/967775046058"  style="width: auto;"   target="_parent" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-</h3>
+
 
   </div>
 
@@ -1635,5 +1675,26 @@ section.contact h2::after {
     });
   </script>
 
+<script>
+  // إظهار وإخفاء زر العودة للأعلى
+  const backToTop = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+
+  // تمرير سلس للعودة للأعلى
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 </body>
 </html>
