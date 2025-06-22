@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="مقاولات, ديكورات, ترميم, تصميم داخلي, مؤسسة درر أروئ, بديل شيبورد, مظلات, عوازل اسطح, ورق جدران, فوم, باركيه, ديكورات, دهانات خارجية, دهانات داخليه, ترميم مباني, مقاولات عامة, سواتر, برجولات "> 
+  <meta name="description" content="مؤسسة درر أروئ للمقاولات والديكورات، نقدم خدمات المقاولات العامة، وترميم المباني، وتصميم الديكورات الداخلية والخارجية بأعلى معايير الجودة والإبداع. تواصل معنا اليوم وحوّل مساحتك إلى لوحة فنية فريدة!">  
   <title> مؤسسه درر اروئ للمقاولات والديكورات</title>
   <link rel="icon" href="IMG-20250617-WA0005.jpg" type="image/png" />
+  <script type="application/ld+json"> ... </script>
+ <meta name="geo.region" content="SA" />
+ <meta name="geo.placename" content="Riyadh" />
+ <meta name="geo.position" content="24.633917;46.562139" />
+ <meta name="geo.position" content="24.339556;45.803778" />
+ <meta name="ICBM" content="24.633917, 46.562139" />
+ <meta name="ICBM" content="24.339556, 45.803778" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="مؤسسة درر أروئ للمقاولات والديكورات">
+<meta name="twitter:description" content="مؤسسة درر أروئ للمقاولات والديكورات، نقدم خدمات المقاولات العامة، الترميم، التصميم الداخلي والخارجي بأعلى جودة.">
+<meta name="twitter:image" content="https://www.example.com/IMG-20250617-WA0005.jpg">
+<!-- OG Tags -->
+<meta property="og:title" content="مؤسسة درر أروئ للمقاولات والديكورات">
+<meta property="og:description" content="مؤسسة درر أروئ للمقاولات والديكورات، نقدم خدمات المقاولات العامة، والترميم، والتصميم الداخلي والخارجي بأعلى معايير الجودة والإبداع.">
+<meta property="og:image" content="https://www.example.com/IMG-20250617-WA0005.jpg">
+<meta property="og:url" content="https://www.example.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
 
   <!-- FontAwesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
@@ -1349,11 +1370,50 @@ section.contact h2::after {
   transform: scale(1.15);
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
+
+/* زر العودة لأعلى الصفحة */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent-color); /* استخدم لونك الأساسي */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 </style>
 
   
 </head>
 <body>
+<!-- زر العودة لأعلى الصفحة -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
   <!-- أيقونات جانبية عائمة -->
   <div class="side-icons">
@@ -1496,13 +1556,13 @@ section.contact h2::after {
       </div>
     </div>
 
-    <div class="service-card">
+    <!-- <div class="service-card">
       <img src="مقاولات عامة/1.jpg" alt="مقاولات عامة ">
       <div class="service-info">
         <a href="12.html" class="arrow-btn"><i class="fas fa-angle-left"></i></a>
         <a href="12.html" class="service-name"> مقاولات عامة</a>
       </div>
-    </div>
+    </div> -->
 
         <div class="service-card">
       <img src="ترميم مباني/1.jpg" alt="ترميم مباني ">
@@ -1693,7 +1753,7 @@ section.contact h2::after {
 
     <!-- فرع الرياض -->
     <div class="branch-card">
-      <img src="فوم/1.jpg" alt="فرع الرياض">
+      <img src="صور المحل/7.jpeg" alt="فرع الرياض">
       <div class="branch-content">
         <h3>فرع الرياض</h3>
         <iframe 
@@ -1713,7 +1773,6 @@ section.contact h2::after {
       </div>
     </div>
 
-    <!-- فرع جدة -->
 <div class="branch-card">
   <img src="ديكورات/2 (1).jpg" alt="فرع الجله">
   <div class="branch-content">
@@ -1734,10 +1793,55 @@ section.contact h2::after {
     </div>
   </div>
 </div>
+<div class="branch-card">
+  <img src="صور المحل/3.jpeg" alt="فرع طويق">
+  <div class="branch-content">
+    <h3>فرع طويق</h3>
+    <iframe 
+      src="https://www.google.com/maps?q=24.548833,46.503611&hl=ar&output=embed"
+      frameborder="0"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+    <div class="branch-contact">
+      <a href="https://wa.me/9660509422751" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+9660509422751" class="phone">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div>
+</div>
 
 
   </div>
 </section>
+
+
+
+<section class="portfolio" id="portfolio">
+  <h2>صور من محلاتنا </h2>
+  <div class="portfolio-grid">
+  
+    <div class="portfolio-item"><img src="صور المحل/3.jpeg" alt="عمل 1"></div>
+    <div class="portfolio-item"><img src="صور المحل/1.jpeg" alt="عمل 2"></div>
+    <div class="portfolio-item"><img src="صور المحل/2.jpeg" alt="عمل 3"></div>
+    <div class="portfolio-item"><img src="صور المحل/4.jpeg" alt="عمل 4"></div>
+    <div class="portfolio-item"><img src="صور المحل/5.jpeg" alt="عمل 5"></div>
+    <div class="portfolio-item"><img src="صور المحل/6.jpeg" alt="عمل 6"></div>
+    <div class="portfolio-item"><img src="صور المحل/7.jpeg" alt="عمل 7"></div>
+    <div class="portfolio-item"><img src="صور المحل/8.jpeg" alt="عمل 8"></div>
+
+
+  </div>
+
+
+
+</section>
+
+
+
 
 
 <section class="portfolio" id="portfolio">
@@ -1988,11 +2092,10 @@ section.contact h2::after {
 
   </div>
 
-  <div class="footer-bottom">
-    © جميع الحقوق محفوظة لمؤسسة درر أروئ للمقاولات 
-    <br>
+© جميع الحقوق محفوظة لمؤسسة درر أروئ للمقاولات والديكورات <span id="year"></span>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
     <h3>صمم من قبل     <a href="https://wa.me/967775046058"  style="width: auto;"   target="_parent" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-</h3>
+
 
   </div>
 </footer>
@@ -2014,6 +2117,77 @@ section.contact h2::after {
       mobileNav.classList.toggle('show');
     });
   </script>
+<script>
+  // إظهار وإخفاء زر العودة للأعلى
+  const backToTop = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+
+  // تمرير سلس للعودة للأعلى
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "مؤسسة درر أروئ للمقاولات والديكورات - فرع 1",
+  "image": "https://www.example.com/IMG-20250617-WA0005.jpg",
+  "url": "https://www.example.com/",
+  "telephone": ["+966550212613", "+966509422751"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "الرياض",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.633917,
+    "longitude": 46.562139
+  },
+  "sameAs": [
+    "https://wa.me/9660550212613",
+    "https://www.tiktok.com/@user83312539015064"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "مؤسسة درر أروئ للمقاولات والديكورات - فرع 2",
+  "image": "https://www.example.com/IMG-20250617-WA0005.jpg",
+  "url": "https://www.example.com/",
+  "telephone": ["+966550212613", "+966509422751"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "الرياض",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.339556,
+    "longitude": 45.803778
+  },
+  "sameAs": [
+    "https://wa.me/9660550212613",
+    "https://www.tiktok.com/@user83312539015064"
+  ]
+}
+</script>
+
 
 </body>
 </html>
